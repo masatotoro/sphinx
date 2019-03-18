@@ -28,6 +28,7 @@
         <script type="text/javascript" src="../../_static/doctools.js"></script>
         <script type="text/javascript" src="../../_static/language_data.js"></script>
         <script type="text/javascript" src="../../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -38,6 +39,7 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
+    <link rel="next" title="Sphinxでドキュメントビルド" href="../build/build-sphinx.html" />
     <link rel="prev" title="Welcome to effective-sphinx&#39;s documentation!" href="../../index.html" /> 
 </head>
 
@@ -100,6 +102,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#id7">Sphinx実践入門の説明の流れ</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../build/build-sphinx.html">Sphinxでドキュメントビルド</a></li>
 </ul>
 
             
@@ -188,10 +191,12 @@ Pages</a>の機能を利用し、ウェブサイトとして公開すること�
 </div>
 <div class="section" id="id3">
 <h2>Sphinx実践入門の環境構築<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">H</span> <span class="n">pip3</span> <span class="n">install</span> <span class="n">sphinx</span>
-<span class="n">sudo</span> <span class="o">-</span><span class="n">H</span> <span class="n">pip3</span> <span class="n">install</span> <span class="n">sphinx_rtd_theme</span>
-<span class="n">sudo</span> <span class="o">-</span><span class="n">H</span> <span class="n">pip3</span> <span class="n">install</span> <span class="n">ghp</span><span class="o">-</span><span class="kn">import</span>
-<span class="nn">sudo</span> <span class="o">-</span><span class="n">H</span> <span class="n">pip3</span> <span class="n">install</span> <span class="n">sphinx</span><span class="o">-</span><span class="n">sitemap</span>
+<p>　以下のように <code class="docutils literal notranslate"><span class="pre">pip3</span></code>
+コマンドを利用し、必要なアプリケーションをインストールします。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo -H pip3 install sphinx
+sudo -H pip3 install sphinx_rtd_theme
+sudo -H pip3 install ghp-import
+sudo -H pip3 install sphinx-sitemap
 </pre></div>
 </div>
 </div>
@@ -244,12 +249,12 @@ Pages</a>の機能を利用し、ウェブサイトとして公開すること�
 </tbody>
 </table>
 <p>　動作確認を実施する際に利用したコマンドは以下になります。</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">lsb</span><span class="o">-</span><span class="n">release</span>
-<span class="n">pandoc</span> <span class="o">--</span><span class="n">version</span>
-<span class="n">make</span> <span class="o">--</span><span class="n">version</span>
-<span class="n">sed</span> <span class="o">--</span><span class="n">version</span>
-<span class="n">pip3</span> <span class="n">show</span> <span class="n">sphinx</span>
-<span class="n">pip3</span> <span class="n">show</span> <span class="n">sphinx_rtd_theme</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat /etc/lsb-release
+pandoc --version
+make --version
+sed --version
+pip3 show sphinx
+pip3 show sphinx_rtd_theme
 </pre></div>
 </div>
 </div>
@@ -282,6 +287,8 @@ Sphinxで扱うRSTの記法に変換することに挑戦します。</p>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../build/build-sphinx.html" class="btn btn-neutral float-right" title="Sphinxでドキュメントビルド" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../../index.html" class="btn btn-neutral float-left" title="Welcome to effective-sphinx&#39;s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

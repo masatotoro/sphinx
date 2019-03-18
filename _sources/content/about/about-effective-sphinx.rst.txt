@@ -37,7 +37,10 @@ Pages <https://pages.github.com/>`__\ の機能を利用し、ウェブサイト
 Sphinx実践入門の環境構築
 ========================
 
-.. code:: bash
+　以下のように ``pip3``
+コマンドを利用し、必要なアプリケーションをインストールします。
+
+.. code-block:: bash
 
    sudo -H pip3 install sphinx
    sudo -H pip3 install sphinx_rtd_theme
@@ -79,7 +82,7 @@ Sphinx実践入門の環境構築
 
 　動作確認を実施する際に利用したコマンドは以下になります。
 
-.. code:: bash
+.. code-block:: bash
 
    cat /etc/lsb-release
    pandoc --version
