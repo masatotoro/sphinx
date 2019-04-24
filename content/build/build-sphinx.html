@@ -1,16 +1,16 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="ja" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <meta content="Sphinx,入門,実践入門,reStructuredText,変換,Makefile,Org-mode,原稿,執筆" name="keywords" />
-<meta content="Sphinxでドキュメントをビルドしてウェブサイトを作成し、EmacsのOrg-modeでドキュメントを編集します。" name="description" />
+  <meta content="Sphinx,入門,実践入門,reStructuredText,変換,Makefile,Org-mode,Pandoc,原稿,執筆" name="keywords" />
+<meta content="Sphinxでドキュメントをビルドしてウェブサイトを作成し、EmacsのOrg-modeを変換し、ドキュメントをビルドします。" name="description" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Sphinxでドキュメントビルド &mdash; effective-sphinx 1.0.0 ドキュメント</title>
+  <title>原稿作成とビルド &mdash; effective-sphinx 1.0.0 documentation</title>
   
 
   
@@ -27,7 +27,6 @@
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
         <script type="text/javascript" src="../../_static/language_data.js"></script>
-        <script type="text/javascript" src="../../_static/translations.js"></script>
         <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
@@ -37,8 +36,9 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="index" title="索引" href="../../genindex.html" />
-    <link rel="search" title="検索" href="../../search.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Git管理とGitHub公開" href="../github/github.html" />
     <link rel="prev" title="Sphinx実践入門について" href="../about/about-effective-sphinx.html" /> 
 </head>
 
@@ -90,21 +90,20 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../about/about-effective-sphinx.html">Sphinx実践入門について</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Sphinxでドキュメントビルド</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">原稿作成とビルド</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#sphnix">Sphnixの概要</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id1">Sphinxのプロジェクト作成</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">コマンドライン方式による新規プロジェクト作成</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">作成された新規プロジェクトの中身確認</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sphinx">Sphinxのプロジェクト作成</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">対話方式：新規プロジェクト作成</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">コマンドライン方式：新規プロジェクト作成</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">作成された新規プロジェクトの中身確認</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#spninx">Spninxのプロジェクトをビルド</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id4">Sphinx でウェブサイトの作成</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">Sphinx で作成されたウェブサイトを確認</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Sphinx でウェブサイトの作成</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Sphinx で作成されたウェブサイトを確認</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">ウェブサイトのデザイン変更</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id7">利用するテンプレート情報</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#sphinx-bootstrap-theme">sphinx_bootstrap_theme</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">ウェブサイトのデザイン変更</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#conf-py">conf.py の変更</a></li>
 </ul>
 </li>
@@ -136,8 +135,27 @@
 <li class="toctree-l3"><a class="reference internal" href="#id22">注釈</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#pandoc">Pandocによるフォーマット変換</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#haskell">[補足] Haskell とは</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#haskell-hello-world">Haskell の Hello World</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#id23">Pandocの対応フォーマット</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id24">変換元</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id25">変換後</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id26">Pandocの変換能力ダイアグラム</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pandocorg-moderestructuredtext">Pandocを用いてOrg-modeからreStructuredTextに変換</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id27">ファイル名を指定して変換する場合</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id28">ディレクトリ内のファイルに適用する場合</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../github/github.html">Git管理とGitHub公開</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../jenkins/jenkins.html">継続的ドキュメンテーション</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knowhow/knowhow.html">執筆活動を効率化するノウハウ</a></li>
 </ul>
 
             
@@ -183,7 +201,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-      <li>Sphinxでドキュメントビルド</li>
+      <li>原稿作成とビルド</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -202,40 +220,53 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="sphinx">
-<h1>Sphinxでドキュメントビルド<a class="headerlink" href="#sphinx" title="このヘッドラインへのパーマリンク">¶</a></h1>
+  <div class="section" id="id1">
+<h1>原稿作成とビルド<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>　本章では、Sphinxの基本的な使い方を学びます。
 Sphinxでプロジェクトを開始し、ビルドして成果物(HTML)ができるまでの一連の流れをまとめます。見栄えのよいHTMLが簡単に作成できることをを体験しましょう。</p>
-<p>　ドキュメントにおいて、最も大事なのはコンテンツだと考えます。読み手にとって必要な情報が、分かりやすく正確に記載されていることが大事です。コンテンツを効率的に作成する作業するために、エディタにもこだわった結果、Emacsを利用するようになりました。</p>
-<p>　そこで出会ったOrg-modeが素晴らしく、もはや、Org-modeがあるから、Emacsを使用していると言っても過言ではないほどお世話になっています。
-Org-modeを利用することで、ドキュメントを構造的に把握し、原稿を体系的に整理することができます。</p>
+<p>　ドキュメントにおいて、最も大事なのはコンテンツです。読み手にとって必要な情報が、分かりやすく正確に記載されていることが大事です。コンテンツを効率的に作成する作業するために、エディタにもこだわった結果、Emacsを利用するようになりました。そこで出会ったOrg-modeが素晴らしく、もはや、Org-modeがあるから、
+Emacsを使用していると言っても過言ではないほどお世話になっています。
+Org-modeを利用することで、ドキュメントを構造的に把握し、体系的に編集することができます。</p>
+<p>　Pandocを利用し、用意したOrg-modeフォーマットのファイルから
+rst（reStructuredText）フォーマットへ変換します。そして、Sphinxでビルドし、見栄えのよいウェブサイトを作成します。</p>
 <div class="section" id="sphnix">
-<h2>Sphnixの概要<a class="headerlink" href="#sphnix" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>Sphnixの概要<a class="headerlink" href="#sphnix" title="Permalink to this headline">¶</a></h2>
 <p>　<a class="reference external" href="http://www.sphinx-doc.org/en/stable/">Sphinx</a>とはドキュメントを作成するPython製のツールです。何がうれしいのかを、以下にまとめてみます。</p>
 <ul class="simple">
-<li>知的で美しいドキュメントを簡単に作成できること<ul>
-<li>出力形式: HTML ・ PDF (LaTeX を使用) ・ ePub</li>
-<li>(インデックス等を自動で作成できる)</li>
+<li><p>知的で美しいドキュメントを簡単に作成できること</p>
+<ul>
+<li><p>出力形式: HTML ・ PDF (LaTeX を使用) ・ ePub</p></li>
+<li><p>(インデックス等を自動で作成できる)</p></li>
 </ul>
 </li>
-<li>Python 製ドキュメンテーション作成ツールとして実績があること<ul>
-<li>reStructuredText の文書をドキュメンテーションに変換できる</li>
-<li>(Python の公式ドキュメントも採用)</li>
+<li><p>Python 製ドキュメンテーション作成ツールとして実績があること</p>
+<ul>
+<li><p>reStructuredText の文書をドキュメンテーションに変換できる</p></li>
+<li><p>(Python の公式ドキュメントも採用)</p></li>
 </ul>
 </li>
-<li>設定やデザインを記事と完全に独立できること<ul>
-<li>記事作成時に細かいデザインを気にしなくてよい</li>
-<li>(レスポンシブに対応したデザインも多数存在)</li>
+<li><p>設定やデザインを記事と完全に独立できること</p>
+<ul>
+<li><p>記事作成時に細かいデザインを気にしなくてよい</p></li>
+<li><p>(レスポンシブに対応したデザインも多数存在)</p></li>
 </ul>
 </li>
 </ul>
 </div>
-<div class="section" id="id1">
-<h2>Sphinxのプロジェクト作成<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="sphinx">
+<h2>Sphinxのプロジェクト作成<a class="headerlink" href="#sphinx" title="Permalink to this headline">¶</a></h2>
+<p>　Sphinxでドキュメントを作成するために、プロジェクトを作成します。プロジェクトを作成する方法には、「対話方式」と「コマンドライン方式」の二つが存在します。</p>
 <div class="section" id="id2">
-<h3>コマンドライン方式による新規プロジェクト作成<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p>　コマンドラインで sphinx のプロジェクトを作成できる方法を紹介します。</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">project_name</span><span class="o">=</span><span class="s2">&quot;effective-sphinx&quot;</span>
+<h3>対話方式：新規プロジェクト作成<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>　Sphinxは、<a class="reference external" href="http://www.sphinx-doc.org/en/stable/man/sphinx-quickstart.html">sphinx-quickstart</a>というツールを提供しています。本ツールを利用することで、ドキュメントのソースディレクトリを生成し、それにデフォルトの設定ファイル等を追加します。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sphinx-quickstart
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>コマンドライン方式：新規プロジェクト作成<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>　コマンドラインでSphinxのプロジェクトを作成できる方法を紹介します。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">project_name</span><span class="o">=</span><span class="s2">&quot;sphinx-template&quot;</span>
 <span class="nv">auther</span><span class="o">=</span><span class="s2">&quot;masatotoro&quot;</span>
 sphinx-quickstart <span class="se">\</span>
   --quiet <span class="se">\</span>
@@ -248,150 +279,129 @@ sphinx-quickstart <span class="se">\</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id3">
-<h3>作成された新規プロジェクトの中身確認<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id4">
+<h3>作成された新規プロジェクトの中身確認<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 </div>
 </div>
 <div class="section" id="spninx">
-<h2>Spninxのプロジェクトをビルド<a class="headerlink" href="#spninx" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id4">
-<h3>Sphinx でウェブサイトの作成<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p>Sphinx でプロジェクトを作成すると Makefile
-が生成されています。以下のコマンドを実行して、Sphinx で HTML
-ファイルが出力します。</p>
+<h2>Spninxのプロジェクトをビルド<a class="headerlink" href="#spninx" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h3>Sphinx でウェブサイトの作成<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>　Sphinxでプロジェクトを作成するとMakefileも生成されます。以下のコマンドを実行して、SphinxでHTMLファイルが出力します。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make html
 </pre></div>
 </div>
 </div>
-<div class="section" id="id5">
-<h3>Sphinx で作成されたウェブサイトを確認<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id6">
+<h3>Sphinx で作成されたウェブサイトを確認<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>何も設定を行っていないウェブサイトです。</p>
 </div>
 </div>
-<div class="section" id="id6">
-<h2>ウェブサイトのデザイン変更<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>デザインを変更しないとテンションが上がらないため、最近よく見かけるようになった
-Read the Doc のデザインを適用します。</p>
 <div class="section" id="id7">
-<h3>利用するテンプレート情報<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<ul class="simple">
-<li><a class="reference external" href="https://github.com/rtfd/sphinx_rtd_theme">https://github.com/rtfd/sphinx_rtd_theme</a></li>
-<li><a class="reference external" href="https://pypi.python.org/pypi/sphinx_rtd_theme">https://pypi.python.org/pypi/sphinx_rtd_theme</a></li>
-</ul>
-</div>
-<div class="section" id="sphinx-bootstrap-theme">
-<h3>sphinx_bootstrap_theme<a class="headerlink" href="#sphinx-bootstrap-theme" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<ul class="simple">
-<li>sphinx_bootstrap_theme をインストール</li>
-</ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo -H pip install sphinx_rtd_theme
-</pre></div>
-</div>
-</div>
+<h2>ウェブサイトのデザイン変更<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>　デザインを変更しないとテンションが上がらないため、最近よく見かけるようになった
+<a class="reference external" href="https://github.com/rtfd/sphinx_rtd_theme">Read the
+Doc</a>のデザインを適用します。</p>
 <div class="section" id="conf-py">
-<h3>conf.py の変更<a class="headerlink" href="#conf-py" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">html_theme</span> <span class="o">=</span> <span class="s2">&quot;sphinx_rtd_theme&quot;</span>
+<h3>conf.py の変更<a class="headerlink" href="#conf-py" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">html_theme</span> <span class="o">=</span> <span class="s2">&quot;sphinx_rtd_theme&quot;</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="id8">
-<h2>Sphinxの課題と対応方針<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>この章で見てきたように、Sphinx
-はとても簡単にウェブサイトが作成することができます。またデザインに関しても、ライブラリを入れて設定を行うことでいい感じになります。</p>
-<p>Sphinx の問題点は、rst (reStructuredText)
-のフォーマットを覚えなければいけないことです。次の章では、その問題を回避するために
-Emacs の org-mode を利用することを提案します。 (markdown
-に対して強い思い入れがある方は markdown を利用してください)</p>
+<h2>Sphinxの課題と対応方針<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p>Sphinxはとても簡単にウェブサイトが作成することができます。またデザインに関しても、ライブラリを入れて設定を行うことでいい感じになります。
+Sphinxの問題点は、rst(reStructuredText)
+のフォーマットを覚えなければいけないことです。</p>
 </div>
 <div class="section" id="org-mode">
-<h2>Org-modeの概要<a class="headerlink" href="#org-mode" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>Org-Mode を一言で表現すると、以下になります。</p>
-<ul class="simple">
-<li>&quot;高速で効率的なプレーンテキストのシステム&quot;</li>
-</ul>
-<p>プレーンテキストで記載しておくと、様々なプラットフォームでも編集を行うことができます。Dropbox
-などで同期すると、その利便性はさらに向上すると思います。</p>
-<p>Org-mode は GTD
-などのタスク管理や、体系的なドキュメント作成と相性がよいです。ここでは、ウェブサイト用のコンテンツを作成する視点で、Org-mode
-の便利な機能を厳選してまとめます。紹介する内容は Org-mode
-の機能の一部にすぎませんので、興味のある方は、ぜひ使いこんで理解を深めてください。</p>
+<h2>Org-modeの概要<a class="headerlink" href="#org-mode" title="Permalink to this headline">¶</a></h2>
+<p>Org-modeとは、”高速で効率的なプレーンテキストのシステム”です。プレーンテキストで記載すると、様々なプラットフォームでファイルを編集をできるメリットがあります。
+Dropbox などで同期すると、その利便性はさらに向上すると思います。</p>
+<p>Org-modeはGTD（Getting Things
+Done）などのタスク管理や、体系的なドキュメント作成と相性がよいです。ここでは、ウェブサイト用のコンテンツを作成する視点で、
+Org-modeの便利な機能を厳選してまとめます。紹介する内容はOrg-modeの機能の一部にすぎません。興味のある方は、ぜひ使いこんで理解を深めてください。</p>
 <div class="section" id="id9">
-<h3>Org-mode の公式サイト<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>Org-mode の公式サイト<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><a class="reference external" href="http://orgmode.org/ja/">http://orgmode.org/ja/</a></li>
+<li><p><a class="reference external" href="http://orgmode.org/ja/">http://orgmode.org/ja/</a></p></li>
 </ul>
 </div>
 <div class="section" id="id10">
-<h3>Org-mode の嬉しいところ<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>Org-mode の嬉しいところ<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <p>使用して嬉しいと感じる理由は以下の３つです。</p>
 <ul class="simple">
-<li>テキストデータなので軽量であること</li>
-<li>文章の構造を意識して記事作成ができること</li>
-<li>作成した記事の活用できる幅が広いこと</li>
+<li><p>テキストデータなので軽量であること</p></li>
+<li><p>文章の構造を意識して記事作成ができること</p></li>
+<li><p>作成した記事の活用できる幅が広いこと</p></li>
 </ul>
 <p>サイトの記事を作成する際のフォーマットは Org-mode で統一します。</p>
 </div>
 <div class="section" id="id11">
-<h3>Org-mode でやりたいこと<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>Org-mode でやりたいこと<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Emacs の org-mode を用いてファイルを変更<ul>
-<li>Goemon によるリアルタイムプレビュ</li>
+<li><p>Emacs の org-mode を用いてファイルを変更</p>
+<ul>
+<li><p>Goemon によるリアルタイムプレビュ</p></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 <div class="section" id="id12">
-<h2>Org-modeで可能な表現の整理<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>Org-modeで可能な表現の整理<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
 <p>ウェブサイト作成を想定した場合に使用する Org-mode
 の記法を整理します。複雑なことを行わないことがポイントになります。早速、順番に確認していきましょう。</p>
 <div class="section" id="id13">
-<h3>メタタグ指定<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>メタタグ指定<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <p>SEO 的に、やって置いた方が良さそうなので、メタタグ追記</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">keywords</span><span class="p">:</span> <span class="n">キーワード</span>
 <span class="p">:</span><span class="n">description</span><span class="p">:</span> <span class="n">説明文</span>
 </pre></div>
 </div>
 <div class="section" id="id14">
-<h4>参考情報<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<h4>参考情報<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li><a class="reference external" href="http://bacchus.ivory.ne.jp/vodka/doc/sphinx-meta.html">http://bacchus.ivory.ne.jp/vodka/doc/sphinx-meta.html</a></li>
+<li><p><a class="reference external" href="http://bacchus.ivory.ne.jp/vodka/doc/sphinx-meta.html">http://bacchus.ivory.ne.jp/vodka/doc/sphinx-meta.html</a></p></li>
 </ul>
 </div>
 </div>
 <div class="section" id="id15">
-<h3>見出し<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>見出し<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>ルール<ul>
-<li>記号: 「*」</li>
-<li>階層: 3 つまで</li>
+<li><p>ルール</p>
+<ul>
+<li><p>記号: 「*」</p></li>
+<li><p>階層: 3 つまで</p></li>
 </ul>
 </li>
 </ul>
 <p>見出し階層の２つまでを用いて目次として出力する。そのため見出しの文字列が重複しないようにすること。</p>
 </div>
 <div class="section" id="id16">
-<h3>箇条書き<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>箇条書き<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>ルール<ul>
-<li>記号: 「-」</li>
-<li>階層: 3 つまで</li>
+<li><p>ルール</p>
+<ul>
+<li><p>記号: 「-」</p></li>
+<li><p>階層: 3 つまで</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="id17">
-<h3>本文<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>本文<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>本文<ul>
-<li>行の途中で改行しない</li>
+<li><p>本文</p>
+<ul>
+<li><p>行の途中で改行しない</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="id18">
-<h3>数式<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>数式<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
 <div class="math notranslate nohighlight">
 \[E = m c^2\]</div>
 <div class="math notranslate nohighlight">
@@ -400,76 +410,206 @@ Emacs の org-mode を利用することを提案します。 (markdown
 \[f(x) = \sum_{i=0}^n x_i\]</div>
 </div>
 <div class="section" id="id19">
-<h3>図<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>図<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
 <p>図の表示サンプル</p>
-<div class="figure" id="id23">
+<div class="figure align-center" id="id29">
 <img alt="画像の挿入" src="../../_images/sphinx.png" />
-<p class="caption"><span class="caption-text">画像の挿入</span></p>
+<p class="caption"><span class="caption-text">画像の挿入</span><a class="headerlink" href="#id29" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="id20">
-<h3>表<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<table border="1" class="docutils">
+<h3>表<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-center">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col style="width: 46%" />
+<col style="width: 54%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Key の見出し</th>
-<th class="head">Value の見出し</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key の見出し</p></th>
+<th class="head"><p>Value の見出し</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>key1</td>
-<td>Value1</td>
+<tbody>
+<tr class="row-even"><td><p>key1</p></td>
+<td><p>Value1</p></td>
 </tr>
-<tr class="row-odd"><td>key2</td>
-<td>Value2</td>
+<tr class="row-odd"><td><p>key2</p></td>
+<td><p>Value2</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="id21">
-<h3>ソースコード<a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>ソースコード<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
 <p>ソースコードの表示サンプル</p>
 <div class="section" id="bash">
-<h4>Bash の場合<a class="headerlink" href="#bash" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<h4>Bash の場合<a class="headerlink" href="#bash" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s2">&quot;Hello Bash!!&quot;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="ruby">
-<h4>Ruby の場合<a class="headerlink" href="#ruby" title="このヘッドラインへのパーマリンク">¶</a></h4>
-<div class="code ruby highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">puts</span> <span class="s2">&quot;Hello World&quot;</span><span class="p">;</span>
+<h4>Ruby の場合<a class="headerlink" href="#ruby" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="nb">puts</span> <span class="s2">&quot;Hello World&quot;</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="python">
-<h4>Python の場合<a class="headerlink" href="#python" title="このヘッドラインへのパーマリンク">¶</a></h4>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">);</span>
+<h4>Python の場合<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">print</span> <span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="uml">
-<h3>UML<a class="headerlink" href="#uml" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>UML<a class="headerlink" href="#uml" title="Permalink to this headline">¶</a></h3>
 <p>ソフトウェアを嗜む場合は、UML が記述できると嬉しいかと思います。</p>
 <p>Org-mode でも Sphinx でも plantuml を利用することが可能です。</p>
 </div>
 <div class="section" id="id22">
-<h3>注釈<a class="headerlink" href="#id22" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>注釈<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
 <p>注釈の表示サンプル</p>
 <div class="admonition note">
-<p class="first admonition-title">注釈</p>
-<p class="last">注釈です</p>
+<p class="admonition-title">Note</p>
+<p>注釈です</p>
 </div>
 <div class="admonition warning">
-<p class="first admonition-title">警告</p>
-<p class="last">警告です！</p>
+<p class="admonition-title">Warning</p>
+<p>警告です！</p>
 </div>
 <div class="admonition-todo admonition" id="index-0">
-<p class="first admonition-title">課題</p>
-<p class="last">課題です！</p>
+<p class="admonition-title">Todo</p>
+<p>課題です！</p>
+</div>
+</div>
+</div>
+<div class="section" id="pandoc">
+<h2>Pandocによるフォーマット変換<a class="headerlink" href="#pandoc" title="Permalink to this headline">¶</a></h2>
+<p>Pandoc とは、以下の特徴をもつツールになります。</p>
+<ul class="simple">
+<li><p>Haskell で書かれたライブラリおよびコマンドラインツール</p></li>
+<li><p>マークアップ形式で書かれた文書を別の形式へ変換することが可能</p></li>
+</ul>
+<p>Sphinx 実践入門では、Pandoc 用いて、Org-mode から reStructuredText
+に変換することを行います。</p>
+<p>これができると、Org-mode で編集したコンテンツを Sphinx
+でウェブサイトに変換することができます。</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://pandoc.org/">公式サイト</a></p>
+<ul>
+<li><p>“a universal document converter”</p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="haskell">
+<h3>[補足] Haskell とは<a class="headerlink" href="#haskell" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.haskell.org/">公式サイト</a></p>
+<ul>
+<li><p>Haskell (ハスケル)
+は非正格な評価を特徴とする純粋関数型プログラミング言語</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="haskell-hello-world">
+<h3>Haskell の Hello World<a class="headerlink" href="#haskell-hello-world" title="Permalink to this headline">¶</a></h3>
+<p>Haskell は不勉強のため、Hello World のみの紹介です。</p>
+<ul class="simple">
+<li><p>ソースコード</p></li>
+</ul>
+<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="nx">main</span> <span class="p">=</span> <span class="nx">putStrLn</span> <span class="s">&quot;Hello, World!&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>実行例</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ghc -o hello hello.hs
+./hello
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id23">
+<h2>Pandocの対応フォーマット<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id24">
+<h3>変換元<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>Emacs Org-mode</em></p></li>
+<li><p>markdown</p></li>
+<li><p>Textile (のサブセット、以下同様)</p></li>
+<li><p>reStructuredText</p></li>
+<li><p>HTML</p></li>
+<li><p>LaTeX</p></li>
+<li><p>MediaWiki markup</p></li>
+<li><p>Haddock markup</p></li>
+<li><p>OPML</p></li>
+<li><p>DocBook</p></li>
+</ul>
+</div>
+<div class="section" id="id25">
+<h3>変換後<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>HTML スライドショ: <em>Slidy</em> ・ Slideous ・ DZSlides ・ reveal.js ・ S5</p></li>
+<li><p>プレーンテキスト</p></li>
+<li><p>markdown</p></li>
+<li><p>reStructuredText</p></li>
+<li><p>XHTML</p></li>
+<li><p>HTML 5</p></li>
+<li><p>LaTeX (beamer スライドショを含む)</p></li>
+<li><p>ConTeXt</p></li>
+<li><p>RTF</p></li>
+<li><p>OPML</p></li>
+<li><p>DocBook</p></li>
+<li><p>OpenDocument</p></li>
+<li><p>ODT</p></li>
+<li><p>Word docx</p></li>
+<li><p>GNU Texinfo</p></li>
+<li><p>MediaWiki markup</p></li>
+<li><p>EPUB (v2 または v3)</p></li>
+<li><p>FictionBook2</p></li>
+<li><p>Textile</p></li>
+<li><p>groff man ページ</p></li>
+<li><p>Emacs Org-Mode</p></li>
+<li><p>AsciiDoc</p></li>
+<li><p>InDesign ICML</p></li>
+<li><p>PDF 出力（LaTeX がインストールされているシステムで使用できます）</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id26">
+<h2>Pandocの変換能力ダイアグラム<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h2>
+<p>Pandoc の変換をダイアグラムにした画像があったので紹介します。</p>
+</div>
+<div class="section" id="pandocorg-moderestructuredtext">
+<h2>Pandocを用いてOrg-modeからreStructuredTextに変換<a class="headerlink" href="#pandocorg-moderestructuredtext" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id27">
+<h3>ファイル名を指定して変換する場合<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pandoc <span class="se">\</span>
+ --standalone <span class="se">\</span>
+ --from org <span class="se">\</span>
+ --to   rst <span class="se">\</span>
+ --output test.rst <span class="se">\</span>
+ test.txt
+</pre></div>
+</div>
+</div>
+<div class="section" id="id28">
+<h3>ディレクトリ内のファイルに適用する場合<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>テキストファイルの拡張子が “.txt” のファイルを順番に処理する</p></li>
+<li><p>処理の内容は、org-mode から rst ファイルに変換すること</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> file in source/*.txt<span class="p">;</span> <span class="k">do</span>
+  <span class="c1"># pandoc -f org -t rst $f -o &quot;source/`basename ${file} .txt`.rst&quot;;</span>
+  pandoc <span class="se">\</span>
+    --standalone <span class="se">\</span>
+    --from org <span class="se">\</span>
+    --to   rst <span class="se">\</span>
+    --output <span class="s2">&quot;source/`basename </span><span class="nv">$f</span><span class="s2"> .txt`.rst&quot;</span> <span class="se">\</span>
+    <span class="si">${</span><span class="nv">file</span><span class="si">}</span>
+<span class="k">done</span>
+</pre></div>
 </div>
 </div>
 </div>
@@ -482,6 +622,8 @@ Emacs の org-mode を利用することを提案します。 (markdown
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../github/github.html" class="btn btn-neutral float-right" title="Git管理とGitHub公開" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../about/about-effective-sphinx.html" class="btn btn-neutral float-left" title="Sphinx実践入門について" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

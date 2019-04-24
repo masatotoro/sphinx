@@ -1,14 +1,14 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="ja" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Welcome to effective-sphinx&#39;s documentation! &mdash; effective-sphinx 1.0.0 ドキュメント</title>
+  <title>Sphinx実践入門 - Org-modeとSphinxの奇跡の共演 - &mdash; effective-sphinx 1.0.0 documentation</title>
   
 
   
@@ -25,7 +25,6 @@
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
         <script type="text/javascript" src="_static/language_data.js"></script>
-        <script type="text/javascript" src="_static/translations.js"></script>
         <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
@@ -35,8 +34,8 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="index" title="索引" href="genindex.html" />
-    <link rel="search" title="検索" href="search.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Sphinx実践入門について" href="content/about/about-effective-sphinx.html" /> 
 </head>
 
@@ -88,7 +87,10 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="content/about/about-effective-sphinx.html">Sphinx実践入門について</a></li>
-<li class="toctree-l1"><a class="reference internal" href="content/build/build-sphinx.html">Sphinxでドキュメントビルド</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/build/build-sphinx.html">原稿作成とビルド</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/github/github.html">Git管理とGitHub公開</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/jenkins/jenkins.html">継続的ドキュメンテーション</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/knowhow/knowhow.html">執筆活動を効率化するノウハウ</a></li>
 </ul>
 
             
@@ -134,7 +136,7 @@
     
       <li><a href="#">Docs</a> &raquo;</li>
         
-      <li>Welcome to effective-sphinx's documentation!</li>
+      <li>Sphinx実践入門 - Org-modeとSphinxの奇跡の共演 -</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -153,8 +155,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="welcome-to-effective-sphinx-s-documentation">
-<h1>Welcome to effective-sphinx's documentation!<a class="headerlink" href="#welcome-to-effective-sphinx-s-documentation" title="このヘッドラインへのパーマリンク">¶</a></h1>
+  <div class="section" id="sphinx-org-modesphinx">
+<h1>Sphinx実践入門 - Org-modeとSphinxの奇跡の共演 -<a class="headerlink" href="#sphinx-org-modesphinx" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
@@ -166,25 +168,45 @@
 <li class="toctree-l2"><a class="reference internal" href="content/about/about-effective-sphinx.html#id7">Sphinx実践入門の説明の流れ</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="content/build/build-sphinx.html">Sphinxでドキュメントビルド</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="content/build/build-sphinx.html">原稿作成とビルド</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="content/build/build-sphinx.html#sphnix">Sphnixの概要</a></li>
-<li class="toctree-l2"><a class="reference internal" href="content/build/build-sphinx.html#id1">Sphinxのプロジェクト作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/build/build-sphinx.html#sphinx">Sphinxのプロジェクト作成</a></li>
 <li class="toctree-l2"><a class="reference internal" href="content/build/build-sphinx.html#spninx">Spninxのプロジェクトをビルド</a></li>
-<li class="toctree-l2"><a class="reference internal" href="content/build/build-sphinx.html#id6">ウェブサイトのデザイン変更</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/build/build-sphinx.html#id7">ウェブサイトのデザイン変更</a></li>
 <li class="toctree-l2"><a class="reference internal" href="content/build/build-sphinx.html#id8">Sphinxの課題と対応方針</a></li>
 <li class="toctree-l2"><a class="reference internal" href="content/build/build-sphinx.html#org-mode">Org-modeの概要</a></li>
 <li class="toctree-l2"><a class="reference internal" href="content/build/build-sphinx.html#id12">Org-modeで可能な表現の整理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/build/build-sphinx.html#pandoc">Pandocによるフォーマット変換</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/build/build-sphinx.html#id23">Pandocの対応フォーマット</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/build/build-sphinx.html#id26">Pandocの変換能力ダイアグラム</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/build/build-sphinx.html#pandocorg-moderestructuredtext">Pandocを用いてOrg-modeからreStructuredTextに変換</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="content/github/github.html">Git管理とGitHub公開</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="content/github/github.html#github">ドキュメントをGitHubで管理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/github/github.html#github-pages">ウェブサイトをGitHub Pagesで公開</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/github/github.html#id1">サイトマップの用意</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="content/jenkins/jenkins.html">継続的ドキュメンテーション</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="content/jenkins/jenkins.html#jenkins">Jenkinsの導入</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="content/knowhow/knowhow.html">執筆活動を効率化するノウハウ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="content/knowhow/knowhow.html#id2">リアルタイムプレビュー</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/knowhow/knowhow.html#id3">ドキュメント校正</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/knowhow/knowhow.html#sphinxpdf">SphinxをPDF出力</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 <div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span class="std std-ref">索引</span></a></li>
-<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">モジュール索引</span></a></li>
-<li><a class="reference internal" href="search.html"><span class="std std-ref">検索ページ</span></a></li>
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
 </div>
 

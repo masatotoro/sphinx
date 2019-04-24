@@ -1,20 +1,22 @@
-==========================
-Sphinxでドキュメントビルド
-==========================
+================
+原稿作成とビルド
+================
 
 
 .. meta::
 
-   :keywords: Sphinx,入門,実践入門,reStructuredText,変換,Makefile,Org-mode,原稿,執筆
-   :description: Sphinxでドキュメントをビルドしてウェブサイトを作成し、EmacsのOrg-modeでドキュメントを編集します。
+   :keywords: Sphinx,入門,実践入門,reStructuredText,変換,Makefile,Org-mode,Pandoc,原稿,執筆
+   :description: Sphinxでドキュメントをビルドしてウェブサイトを作成し、EmacsのOrg-modeを変換し、ドキュメントをビルドします。
 
 　本章では、Sphinxの基本的な使い方を学びます。
 Sphinxでプロジェクトを開始し、ビルドして成果物(HTML)ができるまでの一連の流れをまとめます。見栄えのよいHTMLが簡単に作成できることをを体験しましょう。
 
-　ドキュメントにおいて、最も大事なのはコンテンツだと考えます。読み手にとって必要な情報が、分かりやすく正確に記載されていることが大事です。コンテンツを効率的に作成する作業するために、エディタにもこだわった結果、Emacsを利用するようになりました。
+　ドキュメントにおいて、最も大事なのはコンテンツです。読み手にとって必要な情報が、分かりやすく正確に記載されていることが大事です。コンテンツを効率的に作成する作業するために、エディタにもこだわった結果、Emacsを利用するようになりました。そこで出会ったOrg-modeが素晴らしく、もはや、Org-modeがあるから、
+Emacsを使用していると言っても過言ではないほどお世話になっています。
+Org-modeを利用することで、ドキュメントを構造的に把握し、体系的に編集することができます。
 
-　そこで出会ったOrg-modeが素晴らしく、もはや、Org-modeがあるから、Emacsを使用していると言っても過言ではないほどお世話になっています。
-Org-modeを利用することで、ドキュメントを構造的に把握し、原稿を体系的に整理することができます。
+　Pandocを利用し、用意したOrg-modeフォーマットのファイルから
+rst（reStructuredText）フォーマットへ変換します。そして、Sphinxでビルドし、見栄えのよいウェブサイトを作成します。
 
 Sphnixの概要
 ============
@@ -39,14 +41,25 @@ Sphnixの概要
 Sphinxのプロジェクト作成
 ========================
 
-コマンドライン方式による新規プロジェクト作成
---------------------------------------------
+　Sphinxでドキュメントを作成するために、プロジェクトを作成します。プロジェクトを作成する方法には、「対話方式」と「コマンドライン方式」の二つが存在します。
 
-　コマンドラインで sphinx のプロジェクトを作成できる方法を紹介します。
+対話方式：新規プロジェクト作成
+------------------------------
+
+　Sphinxは、`sphinx-quickstart <http://www.sphinx-doc.org/en/stable/man/sphinx-quickstart.html>`__\ というツールを提供しています。本ツールを利用することで、ドキュメントのソースディレクトリを生成し、それにデフォルトの設定ファイル等を追加します。
 
 .. code-block:: bash
 
-   project_name="effective-sphinx"
+   sphinx-quickstart
+
+コマンドライン方式：新規プロジェクト作成
+----------------------------------------
+
+　コマンドラインでSphinxのプロジェクトを作成できる方法を紹介します。
+
+.. code-block:: bash
+
+   project_name="sphinx-template"
    auther="masatotoro"
    sphinx-quickstart \
      --quiet \
@@ -66,9 +79,7 @@ Spninxのプロジェクトをビルド
 Sphinx でウェブサイトの作成
 ---------------------------
 
-Sphinx でプロジェクトを作成すると Makefile
-が生成されています。以下のコマンドを実行して、Sphinx で HTML
-ファイルが出力します。
+　Sphinxでプロジェクトを作成するとMakefileも生成されます。以下のコマンドを実行して、SphinxでHTMLファイルが出力します。
 
 .. code-block:: bash
 
@@ -82,23 +93,9 @@ Sphinx で作成されたウェブサイトを確認
 ウェブサイトのデザイン変更
 ==========================
 
-デザインを変更しないとテンションが上がらないため、最近よく見かけるようになった
-Read the Doc のデザインを適用します。
-
-利用するテンプレート情報
-------------------------
-
--  https://github.com/rtfd/sphinx_rtd_theme
--  https://pypi.python.org/pypi/sphinx_rtd_theme
-
-sphinx\_bootstrap\_theme
-------------------------
-
--  sphinx\_bootstrap\_theme をインストール
-
-.. code-block:: bash
-
-   sudo -H pip install sphinx_rtd_theme
+　デザインを変更しないとテンションが上がらないため、最近よく見かけるようになった
+`Read the
+Doc <https://github.com/rtfd/sphinx_rtd_theme>`__\ のデザインを適用します。
 
 conf.py の変更
 --------------
@@ -110,28 +107,19 @@ conf.py の変更
 Sphinxの課題と対応方針
 ======================
 
-この章で見てきたように、Sphinx
-はとても簡単にウェブサイトが作成することができます。またデザインに関しても、ライブラリを入れて設定を行うことでいい感じになります。
-
-Sphinx の問題点は、rst (reStructuredText)
-のフォーマットを覚えなければいけないことです。次の章では、その問題を回避するために
-Emacs の org-mode を利用することを提案します。 (markdown
-に対して強い思い入れがある方は markdown を利用してください)
+Sphinxはとても簡単にウェブサイトが作成することができます。またデザインに関しても、ライブラリを入れて設定を行うことでいい感じになります。
+Sphinxの問題点は、rst(reStructuredText)
+のフォーマットを覚えなければいけないことです。
 
 Org-modeの概要
 ==============
 
-Org-Mode を一言で表現すると、以下になります。
+Org-modeとは、"高速で効率的なプレーンテキストのシステム"です。プレーンテキストで記載すると、様々なプラットフォームでファイルを編集をできるメリットがあります。
+Dropbox などで同期すると、その利便性はさらに向上すると思います。
 
--  "高速で効率的なプレーンテキストのシステム"
-
-プレーンテキストで記載しておくと、様々なプラットフォームでも編集を行うことができます。Dropbox
-などで同期すると、その利便性はさらに向上すると思います。
-
-Org-mode は GTD
-などのタスク管理や、体系的なドキュメント作成と相性がよいです。ここでは、ウェブサイト用のコンテンツを作成する視点で、Org-mode
-の便利な機能を厳選してまとめます。紹介する内容は Org-mode
-の機能の一部にすぎませんので、興味のある方は、ぜひ使いこんで理解を深めてください。
+Org-modeはGTD（Getting Things
+Done）などのタスク管理や、体系的なドキュメント作成と相性がよいです。ここでは、ウェブサイト用のコンテンツを作成する視点で、
+Org-modeの便利な機能を厳選してまとめます。紹介する内容はOrg-modeの機能の一部にすぎません。興味のある方は、ぜひ使いこんで理解を深めてください。
 
 Org-mode の公式サイト
 ---------------------
@@ -286,3 +274,130 @@ Org-mode でも Sphinx でも plantuml を利用することが可能です。
 .. todo::
 
    課題です！
+
+Pandocによるフォーマット変換
+============================
+
+Pandoc とは、以下の特徴をもつツールになります。
+
+-  Haskell で書かれたライブラリおよびコマンドラインツール
+-  マークアップ形式で書かれた文書を別の形式へ変換することが可能
+
+Sphinx 実践入門では、Pandoc 用いて、Org-mode から reStructuredText
+に変換することを行います。
+
+これができると、Org-mode で編集したコンテンツを Sphinx
+でウェブサイトに変換することができます。
+
+-  `公式サイト <http://pandoc.org/>`__
+
+   -  "a universal document converter"
+
+[補足] Haskell とは
+-------------------
+
+-  `公式サイト <https://www.haskell.org/>`__
+
+   -  Haskell (ハスケル)
+      は非正格な評価を特徴とする純粋関数型プログラミング言語
+
+Haskell の Hello World
+----------------------
+
+Haskell は不勉強のため、Hello World のみの紹介です。
+
+-  ソースコード
+
+.. code:: go
+
+   main = putStrLn "Hello, World!"
+
+-  実行例
+
+.. code-block:: bash
+
+   ghc -o hello hello.hs
+   ./hello
+
+Pandocの対応フォーマット
+========================
+
+変換元
+------
+
+-  *Emacs Org-mode*
+-  markdown
+-  Textile (のサブセット、以下同様)
+-  reStructuredText
+-  HTML
+-  LaTeX
+-  MediaWiki markup
+-  Haddock markup
+-  OPML
+-  DocBook
+
+変換後
+------
+
+-  HTML スライドショ: *Slidy* ・ Slideous ・ DZSlides ・ reveal.js ・ S5
+-  プレーンテキスト
+-  markdown
+-  reStructuredText
+-  XHTML
+-  HTML 5
+-  LaTeX (beamer スライドショを含む)
+-  ConTeXt
+-  RTF
+-  OPML
+-  DocBook
+-  OpenDocument
+-  ODT
+-  Word docx
+-  GNU Texinfo
+-  MediaWiki markup
+-  EPUB (v2 または v3)
+-  FictionBook2
+-  Textile
+-  groff man ページ
+-  Emacs Org-Mode
+-  AsciiDoc
+-  InDesign ICML
+-  PDF 出力（LaTeX がインストールされているシステムで使用できます）
+
+Pandocの変換能力ダイアグラム
+============================
+
+Pandoc の変換をダイアグラムにした画像があったので紹介します。
+
+Pandocを用いてOrg-modeからreStructuredTextに変換
+================================================
+
+ファイル名を指定して変換する場合
+--------------------------------
+
+.. code-block:: bash
+
+   pandoc \
+    --standalone \
+    --from org \
+    --to   rst \
+    --output test.rst \
+    test.txt
+
+ディレクトリ内のファイルに適用する場合
+--------------------------------------
+
+-  テキストファイルの拡張子が ".txt" のファイルを順番に処理する
+-  処理の内容は、org-mode から rst ファイルに変換すること
+
+.. code-block:: bash
+
+   for file in source/*.txt; do
+     # pandoc -f org -t rst $f -o "source/`basename ${file} .txt`.rst";
+     pandoc \
+       --standalone \
+       --from org \
+       --to   rst \
+       --output "source/`basename $f .txt`.rst" \
+       ${file}
+   done

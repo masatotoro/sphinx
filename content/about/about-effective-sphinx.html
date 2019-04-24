@@ -1,8 +1,8 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="ja" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta content="Sphinx,入門,実践入門,概要,チュートリアル,tutorial" name="keywords" />
@@ -10,7 +10,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Sphinx実践入門について &mdash; effective-sphinx 1.0.0 ドキュメント</title>
+  <title>Sphinx実践入門について &mdash; effective-sphinx 1.0.0 documentation</title>
   
 
   
@@ -27,7 +27,6 @@
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
         <script type="text/javascript" src="../../_static/language_data.js"></script>
-        <script type="text/javascript" src="../../_static/translations.js"></script>
         <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
@@ -37,10 +36,10 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="index" title="索引" href="../../genindex.html" />
-    <link rel="search" title="検索" href="../../search.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Sphinxでドキュメントビルド" href="../build/build-sphinx.html" />
-    <link rel="prev" title="Welcome to effective-sphinx&#39;s documentation!" href="../../index.html" /> 
+    <link rel="prev" title="Sphinx実践入門 - Org-modeとSphinxの奇跡の共演 -" href="../../index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -103,6 +102,9 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../build/build-sphinx.html">Sphinxでドキュメントビルド</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../github/github.html">GitHubでウェブサイトを公開</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../jenkins/jenkins.html">Jenkinsによる継続的ドキュメンテーション</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knowhow/knowhow.html">ノウハウ</a></li>
 </ul>
 
             
@@ -168,29 +170,30 @@
            <div itemprop="articleBody">
             
   <div class="section" id="sphinx">
-<h1>Sphinx実践入門について<a class="headerlink" href="#sphinx" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<p>　Sphinx実践入門は、ドキュメントを作成＆共有する方法を解説します。具体的には、プレーンテキストで作成したファイルを
+<h1>Sphinx実践入門について<a class="headerlink" href="#sphinx" title="Permalink to this headline">¶</a></h1>
+<p>　Sphinx実践入門は、ドキュメントを作成＆共有する方法を解説します。具体的には、プレーンテキストで作成したファイルをドキュメンテーションツールである
 <code class="docutils literal notranslate"><span class="pre">sphinx</span></code>
-と呼ばれるツールで静的ファイルに出力し、ウェブ(<code class="docutils literal notranslate"><span class="pre">GitHub</span></code>)上に公開することをゴールとします。</p>
+で静的ファイルに出力し、ウェブ(<code class="docutils literal notranslate"><span class="pre">GitHub</span></code>)上に公開することをゴールとします。</p>
 <div class="section" id="id1">
-<h2>Sphinx実践入門の目的<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>Sphinx実践入門の目的<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>　ソフトウェア開発において、なぜ「ドキュメント」が求められるのでしょうか？設計時にドキュメントを作成し共有しなければ、開発したシステムが属人化
 (特定の人しか管理できない状態)になります。したがって、ソフトウェア開発の現場では、設計ドキュメントを作成しながら開発を進めています。しかし、設計ドキュメントの編集・共有にはコストがかかることが課題なっています。</p>
 <p>　チーム開発では、<a class="reference external" href="http://www.redmine.org/">Redmine</a>、<a class="reference external" href="https://www.atlassian.com/software/confluence">Confluence</a>などツールが持つWiki機能を利用し、設計ドキュメントをまとめることが一般的です。この場合、ドキュメントの編集するためWikiにアクセスし、ツールに依存する記法で編集することを強いられ、編集にコストがかかります。また、複数人でWiki機能を活用してドキュメントをまとめて情報が増えた結果、情報が散在し有効に活用できない問題に遭遇します。その結果、情報をまとめた当事者に、情報の置き場所の問い合わせする事象が発生し、共有にコストがかかります。</p>
 <p>　Sphinx実践入門では、ドキュメントを一元管理し体系的にまとめる方法を提案し、チームで協力してドキュメント継続的にメンテナンスする仕組みを構築します。その結果、前述した課題を解決することを目指します。そのために、様々なツールを駆使し、ドキュメントのメンテナンスコストを下げることに取り組んでいます。そして、ソフトウェアエンジニアが、少しでもコーディングに注力できるようになればと願っています。</p>
 </div>
 <div class="section" id="id2">
-<h2>Sphinx実践入門の構成図<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>Sphinx実践入門の構成図<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>　開発マシンにおいて、 Emacsでドキュメントを編集し <code class="docutils literal notranslate"><span class="pre">Sphinx</span></code>
 でビルドすることでHTMLを生成します。成果物であるHTMLを <code class="docutils literal notranslate"><span class="pre">ghp-import</span></code>
 を利用し、<a class="reference external" href="https://github.com/">GitHub</a>のリポジトリにpushします。そして、<a class="reference external" href="https://pages.github.com/">GitHub
 Pages</a>の機能を利用し、ウェブサイトとして公開することを実現します。</p>
-<div class="figure" id="id8">
-<img alt="Sphinx実践入門のシステム構成図" src="../../_images/system-constitution.svg" /><p class="caption"><span class="caption-text">Sphinx実践入門のシステム構成図</span></p>
+<div class="figure align-center" id="id8">
+<img alt="Sphinx実践入門のシステム構成図" src="../../_images/system-constitution.png" />
+<p class="caption"><span class="caption-text">Sphinx実践入門のシステム構成図</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="id3">
-<h2>Sphinx実践入門の環境構築<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>Sphinx実践入門の環境構築<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>　以下のように <code class="docutils literal notranslate"><span class="pre">pip3</span></code>
 コマンドを利用し、必要なアプリケーションをインストールします。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo -H pip3 install sphinx
@@ -201,50 +204,50 @@ sudo -H pip3 install sphinx-sitemap
 </div>
 </div>
 <div class="section" id="id4">
-<h2>対象読者と動作確認環境<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>対象読者と動作確認環境<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id5">
-<h3>対象読者<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>対象読者<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>　本資料の目的は、コンテンツの質向上に専念できる「ウェブサイト構築術」を共有することです。対象読者は、
 複数のツールを使いこなし、ウェブサイトの更新を自動化することに興味がある方に設定します。</p>
 <div class="admonition note">
-<p class="first admonition-title">注釈</p>
-<p class="last">Emacs をエディタとして使っており、
+<p class="admonition-title">Note</p>
+<p>Emacs をエディタとして使っており、
 様々なツールを活用することが好きな方が楽しめると内容になっています。
 利用するツールは、Sphinx ・ Pandoc ・ Goemon ・ Jenkins を想定しています。</p>
 </div>
 </div>
 <div class="section" id="id6">
-<h3>動作確認環境<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>動作確認環境<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>　「Sphinx実践入門」は以下の環境で動作確認を実施しています。</p>
-<table border="1" class="docutils" id="id9">
-<caption><span class="caption-text">Sphinx実践入門の動作確認環境</span><a class="headerlink" href="#id9" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="docutils align-center" id="id9">
+<caption><span class="caption-text">Sphinx実践入門の動作確認環境</span><a class="headerlink" href="#id9" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="57%" />
-<col width="43%" />
+<col style="width: 57%" />
+<col style="width: 43%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">項目</th>
-<th class="head">バージョン</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>項目</p></th>
+<th class="head"><p>バージョン</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>OS</td>
-<td>Ubuntu 18.10</td>
+<tbody>
+<tr class="row-even"><td><p>OS</p></td>
+<td><p>Ubuntu 18.10</p></td>
 </tr>
-<tr class="row-odd"><td>pandoc</td>
-<td>2.6</td>
+<tr class="row-odd"><td><p>pandoc</p></td>
+<td><p>2.6</p></td>
 </tr>
-<tr class="row-even"><td>GNU Make</td>
-<td>4.2.1</td>
+<tr class="row-even"><td><p>GNU Make</p></td>
+<td><p>4.2.1</p></td>
 </tr>
-<tr class="row-odd"><td>GNU sed</td>
-<td>4.5</td>
+<tr class="row-odd"><td><p>GNU sed</p></td>
+<td><p>4.5</p></td>
 </tr>
-<tr class="row-even"><td>Sphinx</td>
-<td>1.8.5</td>
+<tr class="row-even"><td><p>Sphinx</p></td>
+<td><p>1.8.5</p></td>
 </tr>
-<tr class="row-odd"><td>sphinx-rtd-theme</td>
-<td>0.4.3</td>
+<tr class="row-odd"><td><p>sphinx-rtd-theme</p></td>
+<td><p>0.4.3</p></td>
 </tr>
 </tbody>
 </table>
@@ -260,13 +263,13 @@ pip3 show sphinx_rtd_theme
 </div>
 </div>
 <div class="section" id="id7">
-<h2>Sphinx実践入門の説明の流れ<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>Sphinx実践入門の説明の流れ<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>Sphinx実践入門について</li>
-<li>原稿作成とビルド</li>
-<li>Git管理とGitHub公開</li>
-<li>執筆活動を効率化するノウハウ</li>
-<li>継続的ドキュメンテーション</li>
+<li><p>Sphinx実践入門について</p></li>
+<li><p>原稿作成とビルド</p></li>
+<li><p>Git管理とGitHub公開</p></li>
+<li><p>継続的ドキュメンテーション</p></li>
+<li><p>執筆活動を効率化するノウハウ</p></li>
 </ol>
 <p>　「Sphinx
 実践入門」では、ウェブサイトで一番重要なコンテンツをプレーンテキストで作成することを推奨します。執筆の効率を高めるために、Emacs
@@ -291,7 +294,7 @@ Sphinxで扱うRSTの記法に変換することに挑戦します。</p>
         <a href="../build/build-sphinx.html" class="btn btn-neutral float-right" title="Sphinxでドキュメントビルド" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../../index.html" class="btn btn-neutral float-left" title="Welcome to effective-sphinx&#39;s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../../index.html" class="btn btn-neutral float-left" title="Sphinx実践入門 - Org-modeとSphinxの奇跡の共演 -" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

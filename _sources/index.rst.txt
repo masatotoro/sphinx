@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to effective-sphinx's documentation!
-============================================
+Sphinx実践入門 - Org-modeとSphinxの奇跡の共演 -
+===============================================
 
 .. toctree::
    :maxdepth: 2
@@ -12,6 +12,9 @@ Welcome to effective-sphinx's documentation!
 
    content/about/about-effective-sphinx
    content/build/build-sphinx
+   content/github/github
+   content/jenkins/jenkins
+   content/knowhow/knowhow
 
 
 Indices and tables
